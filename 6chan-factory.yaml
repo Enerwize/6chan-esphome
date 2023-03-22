@@ -1,6 +1,6 @@
 substitutions:
 # Change the disp_name to something you want  
-  disp_name: 6Chan2
+  disp_name: 6chan
   friendly_name: 6 Channel Energy Meter
   # Interval of how often the power is updated
   update_time: 5s
@@ -24,7 +24,7 @@ substitutions:
   disable_webserver: "false" # set to "true" to disable webserver listening on port 80.
 
 esphome:
-    name: "6chan"
+    name: ${disp_name}
     name_add_mac_suffix: true
     platform: ESP32
     board: nodemcu-32s
