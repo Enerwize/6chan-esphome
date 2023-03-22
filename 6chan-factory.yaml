@@ -1,5 +1,5 @@
 substitutions:
-# Change the disp_name to something you want  
+# Change the disp_name to something you want
   disp_name: 6chan
   friendly_name: 6 Channel Energy Meter
   # Interval of how often the power is updated
@@ -41,7 +41,7 @@ esp32_improv:
 dashboard_import:
   package_import_url: github://Enerwize/6chan-esphome/6chan-factory.yaml
   import_full_config: false # or true
-  
+
 preferences:
     flash_write_interval: 10min
 
@@ -60,14 +60,14 @@ logger:
 # Enable Home Assistant API
 api:
 #    encryption:
-#        key: 
+#        key:
 
 # https://esphome.io/components/ota.html
 ota:
     on_error:
         then:
             - button.press: restart_button
-            
+
 web_server:
   port: 80
 
@@ -87,7 +87,7 @@ sensor:
     name: ${disp_name} WiFi
     update_interval: 60s
 
-  #IC1 
+  #IC1
   - platform: atm90e32
     cs_pin: 5
     phase_a:
