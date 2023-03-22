@@ -5,11 +5,12 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write
+
 jobs:
   build:
     uses: esphome/workflows/.github/workflows/publish.yml@main
     with:
-      # CHANGEME: Set the filenames of your config files here:
       files: 6chan-factory.yaml
-      # CHANGEME: Set the name of your project here:
       name: 6chan-esphome
