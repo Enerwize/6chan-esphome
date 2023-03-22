@@ -39,7 +39,7 @@ esp32_improv:
 
 # This should point to the public location of this yaml file.
 dashboard_import:
-  package_import_url: github://esphome/esphome-project-template/project-template-esp32.yaml@v6
+  package_import_url: github://Enerwize/6chan-esphome/6chan-factory.yaml
   import_full_config: false # or true
   
 preferences:
