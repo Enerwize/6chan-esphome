@@ -180,6 +180,15 @@ sensor:
     gain_pga: 1X
     update_interval: ${update_time}
 
+  - platform: CT1_daily_energy
+    name: ${disp_name} CT1 kWh
+    power_id: ct1Watts
+    filters:
+      - multiply: 0.001
+    unit_of_measurement: kWh
+    device_class: energy
+    state_class: total_increasing
+
 # https://esphome.io/components/button/index.html
 # https://esphome.io/components/button/restart.html
 button:
