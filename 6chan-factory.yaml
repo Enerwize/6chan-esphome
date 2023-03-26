@@ -30,7 +30,7 @@ esphome:
     board: nodemcu-32s
     project:
       name: "energymeter.6chan"
-      version: "0.1.0"
+      version: "0.1.1"
 
 # Sets up Bluetooth LE (Only on ESP32) to allow the user
 # to provision wifi credentials to the device.
@@ -183,6 +183,46 @@ sensor:
   - platform: total_daily_energy
     name: ${disp_name} CT1 kWh
     power_id: ct1Watts
+    filters:
+      - multiply: 0.001
+    unit_of_measurement: kWh
+    device_class: energy
+    state_class: total_increasing
+  - platform: total_daily_energy
+    name: ${disp_name} CT2 kWh
+    power_id: ct2Watts
+    filters:
+      - multiply: 0.001
+    unit_of_measurement: kWh
+    device_class: energy
+    state_class: total_increasing
+  - platform: total_daily_energy
+    name: ${disp_name} CT3 kWh
+    power_id: ct3Watts
+    filters:
+      - multiply: 0.001
+    unit_of_measurement: kWh
+    device_class: energy
+    state_class: total_increasing
+  - platform: total_daily_energy
+    name: ${disp_name} CT4 kWh
+    power_id: ct4Watts
+    filters:
+      - multiply: 0.001
+    unit_of_measurement: kWh
+    device_class: energy
+    state_class: total_increasing
+  - platform: total_daily_energy
+    name: ${disp_name} CT5 kWh
+    power_id: ct5Watts
+    filters:
+      - multiply: 0.001
+    unit_of_measurement: kWh
+    device_class: energy
+    state_class: total_increasing
+  - platform: total_daily_energy
+    name: ${disp_name} CT6 kWh
+    power_id: ct6Watts
     filters:
       - multiply: 0.001
     unit_of_measurement: kWh
