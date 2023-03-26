@@ -180,7 +180,7 @@ sensor:
     gain_pga: 1X
     update_interval: ${update_time}
 
-  - platform: CT1_daily_energy
+  - platform: total_daily_energy
     name: ${disp_name} CT1 kWh
     power_id: ct1Watts
     filters:
