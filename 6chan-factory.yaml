@@ -107,12 +107,6 @@ sensor:
         id: ct1Watts
         # filters:
         # - multiply: 2
-      reactive_power:
-        name: ${disp_name} CT1 VAR
-        id: ct1VAR
-      power_factor:
-        name: ${disp_name} CT1 power factor
-        id: ct1PF
       gain_voltage: ${voltage_cal}
       gain_ct: ${current_cal}
     phase_b:
