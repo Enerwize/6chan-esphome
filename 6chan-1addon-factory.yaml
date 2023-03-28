@@ -183,6 +183,10 @@ sensor:
   - platform: atm90e32
     cs_pin: 0
     phase_a:
+      voltage:
+        name: ${disp_name} Volts C
+        id: ic3Volts
+        accuracy_decimals: 1
       power:
         name: ${disp_name} CT7 Watts
         id: ct7Watts
@@ -207,6 +211,10 @@ sensor:
   - platform: atm90e32
     cs_pin: 16
     phase_a:
+      voltage:
+        name: ${disp_name} Volts D
+        id: ic4Volts
+        accuracy_decimals: 1
       power:
         name: ${disp_name} CT10 Watts
         id: ct10Watts
@@ -219,6 +227,9 @@ sensor:
       gain_voltage: ${voltage_cal}
       gain_ct: ${current_cal}
     phase_c:
+      current:
+        name: ${disp_name} CT12 Amps
+        id: ct12Amps
       power:
         name: ${disp_name} CT12 Watts
         id: ct12Watts
