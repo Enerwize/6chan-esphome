@@ -26,11 +26,14 @@ substitutions:
 esphome:
     name: ${disp_name}
     name_add_mac_suffix: true
-    platform: ESP32
-    board: nodemcu-32s
     project:
       name: "energymeter.6chan"
       version: "0.1.1"
+
+esp32:
+  board: az-delivery-devkit-v4
+  framework:
+    type: arduino
 
 # Sets up Bluetooth LE (Only on ESP32) to allow the user
 # to provision wifi credentials to the device.
@@ -197,7 +200,7 @@ sensor:
         id: ct9Watts
       gain_voltage: ${voltage_cal}
       gain_ct: ${current_cal}
-    line_frequency: 60Hz
+    line_frequency: 50Hz
     gain_pga: 1X
     update_interval: ${update_time}
 #IC2 AddOn 1
@@ -221,7 +224,7 @@ sensor:
         id: ct12Watts
       gain_voltage: ${voltage_cal}
       gain_ct: ${current_cal}
-    line_frequency: 60Hz
+    line_frequency: 50Hz
     gain_pga: 1X
     update_interval: ${update_time}
 
@@ -273,7 +276,7 @@ sensor:
     unit_of_measurement: kWh
     device_class: energy
     state_class: total_increasing
-    
+
   - platform: uptime
     name: Uptime Sensor
 
