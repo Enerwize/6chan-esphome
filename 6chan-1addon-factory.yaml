@@ -56,6 +56,8 @@ captive_portal:
 
 # Enable logging
 logger:
+  logs:
+    sensor: INFO
 
 # Enable Home Assistant API
 api:
