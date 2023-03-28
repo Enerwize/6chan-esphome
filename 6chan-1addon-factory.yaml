@@ -1,0 +1,330 @@
+substitutions:
+# Change the disp_name to something you want
+  disp_name: 6chan
+  friendly_name: 6 Channel Energy Meter
+  # Interval of how often the power is updated
+  update_time: 5s
+  # Current Transformers:
+  # 20A/25mA SCT-006: 11143
+  # 30A/1V SCT-013-030: 8650
+  # 50A/1V SCT-013-050: 15420
+  # 80A/26.6mA SCT-010: 41660
+  # 100A/50ma SCT-013-000: 27518
+  # 120A/40mA: SCT-016: 41787
+  # 200A/100mA SCT-024: 27518
+  # 200A/50mA SCT-024: 55036
+  current_cal: '27518'
+
+  # Jameco 9VAC Transformer:
+  # For meter versions:
+  # >= v1.3: 7305
+  voltage_cal: '13839'
+
+  disable_entities: "false" # set to "false" to have all entities show up in Home Assistant automatically
+  disable_webserver: "false" # set to "true" to disable webserver listening on port 80.
+
+esphome:
+    name: ${disp_name}
+    name_add_mac_suffix: true
+    platform: ESP32
+    board: nodemcu-32s
+    project:
+      name: "energymeter.6chan"
+      version: "0.1.1"
+
+# Sets up Bluetooth LE (Only on ESP32) to allow the user
+# to provision wifi credentials to the device.
+esp32_improv:
+  authorizer: none
+
+# This should point to the public location of this yaml file.
+dashboard_import:
+  package_import_url: github://Enerwize/6chan-esphome/6chan-1addon-factory.yaml
+  import_full_config: false # or true
+
+preferences:
+    flash_write_interval: 10min
+
+wifi:
+  # Set up a wifi access point
+  ap:
+    password: "12345678"
+
+# In combination with the `ap` this allows the user
+# to provision wifi credentials to the device.
+captive_portal:
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+#    encryption:
+#        key:
+
+# https://esphome.io/components/ota.html
+ota:
+    on_error:
+        then:
+            - button.press: restart_button
+
+web_server:
+  port: 80
+
+spi:
+  clk_pin: 18
+  miso_pin: 19
+  mosi_pin: 23
+
+globals:
+  - id: ct1_cal
+    type: int
+    restore_value: yes
+    initial_value: '27518'
+
+sensor:
+  - platform: wifi_signal
+    name: ${disp_name} WiFi
+    update_interval: 60s
+
+  #IC1
+  - platform: atm90e32
+    cs_pin: 5
+    phase_a:
+      voltage:
+        name: ${disp_name} Volts A
+        id: ic1Volts
+        accuracy_decimals: 1
+      current:
+        name: ${disp_name} CT1 Amps
+        id: ct1Amps
+        # The max value for current that the meter can output is 65.535. If you expect to measure current over 65A,
+        # divide the gain_ct by 2 (120A CT) or 4 (200A CT) and multiply the current and power values by 2 or 4 by uncommenting the filter below
+        # filters:
+        # - multiply: 2
+      power:
+        name: ${disp_name} CT1 Watts
+        id: ct1Watts
+        # filters:
+        # - multiply: 2
+      gain_voltage: ${voltage_cal}
+      gain_ct: ${current_cal}
+    phase_b:
+      current:
+        name: ${disp_name} CT2 Amps
+        id: ct2Amps
+      power:
+        name: ${disp_name} CT2 Watts
+        id: ct2Watts
+      gain_voltage: ${voltage_cal}
+      gain_ct: ${current_cal}
+    phase_c:
+      current:
+        name: ${disp_name} CT3 Amps
+        id: ct3Amps
+      power:
+        name: ${disp_name} CT3 Watts
+        id: ct3Watts
+      gain_voltage: ${voltage_cal}
+      gain_ct: ${current_cal}
+    frequency:
+      name: ${disp_name} Freq A
+    line_frequency: 50Hz
+    gain_pga: 1X
+    update_interval: ${update_time}
+
+  #IC2
+  - platform: atm90e32
+    cs_pin: 4
+    phase_a:
+      #this voltage is only needed if monitoring 2 voltages
+      voltage:
+        name: ${disp_name} Volts B
+        id: ic2Volts
+        accuracy_decimals: 1
+      current:
+        name: ${disp_name} CT4 Amps
+        id: ct4Amps
+      power:
+        name: ${disp_name} CT4 Watts
+        id: ct4Watts
+      gain_voltage: ${voltage_cal}
+      gain_ct: ${current_cal}
+    phase_b:
+      current:
+        name: ${disp_name} CT5 Amps
+        id: ct5Amps
+      power:
+        name: ${disp_name} CT5 Watts
+        id: ct5Watts
+      gain_voltage: ${voltage_cal}
+      gain_ct: ${current_cal}
+    phase_c:
+      current:
+        name: ${disp_name} CT6 Amps
+        id: ct6Amps
+      power:
+        name: ${disp_name} CT6 Watts
+        id: ct6Watts
+      gain_voltage: ${voltage_cal}
+      gain_ct: ${current_cal}
+    frequency:
+      name: ${disp_name} Freq B
+    line_frequency: 50Hz
+    gain_pga: 1X
+    update_interval: ${update_time}
+
+  #IC1 AddOn 1
+  - platform: atm90e32
+    cs_pin: 0
+    phase_a:
+      power:
+        name: ${disp_name} CT7 Watts
+        id: ct7Watts
+      gain_voltage: ${voltage_cal}
+      gain_ct: ${current_cal}
+    phase_b:
+      power:
+        name: ${disp_name} CT8 Watts
+        id: ct8Watts
+      gain_voltage: ${voltage_cal}
+      gain_ct: ${current_cal}
+    phase_c:
+      power:
+        name: ${disp_name} CT9 Watts
+        id: ct9Watts
+      gain_voltage: ${voltage_cal}
+      gain_ct: ${current_cal}
+    line_frequency: 60Hz
+    gain_pga: 1X
+    update_interval: ${update_time}
+#IC2 AddOn 1
+  - platform: atm90e32
+    cs_pin: 16
+    phase_a:
+      power:
+        name: ${disp_name} CT10 Watts
+        id: ct10Watts
+      gain_voltage: ${voltage_cal}
+      gain_ct: ${current_cal}
+    phase_b:
+      power:
+        name: ${disp_name} CT11 Watts
+        id: ct11Watts
+      gain_voltage: ${voltage_cal}
+      gain_ct: ${current_cal}
+    phase_c:
+      power:
+        name: ${disp_name} CT12 Watts
+        id: ct12Watts
+      gain_voltage: ${voltage_cal}
+      gain_ct: ${current_cal}
+    line_frequency: 60Hz
+    gain_pga: 1X
+    update_interval: ${update_time}
+
+  - platform: total_daily_energy
+    name: ${disp_name} CT1 kWh
+    power_id: ct1Watts
+    filters:
+      - multiply: 0.001
+    unit_of_measurement: kWh
+    device_class: energy
+    state_class: total_increasing
+  - platform: total_daily_energy
+    name: ${disp_name} CT2 kWh
+    power_id: ct2Watts
+    filters:
+      - multiply: 0.001
+    unit_of_measurement: kWh
+    device_class: energy
+    state_class: total_increasing
+  - platform: total_daily_energy
+    name: ${disp_name} CT3 kWh
+    power_id: ct3Watts
+    filters:
+      - multiply: 0.001
+    unit_of_measurement: kWh
+    device_class: energy
+    state_class: total_increasing
+  - platform: total_daily_energy
+    name: ${disp_name} CT4 kWh
+    power_id: ct4Watts
+    filters:
+      - multiply: 0.001
+    unit_of_measurement: kWh
+    device_class: energy
+    state_class: total_increasing
+  - platform: total_daily_energy
+    name: ${disp_name} CT5 kWh
+    power_id: ct5Watts
+    filters:
+      - multiply: 0.001
+    unit_of_measurement: kWh
+    device_class: energy
+    state_class: total_increasing
+  - platform: total_daily_energy
+    name: ${disp_name} CT6 kWh
+    power_id: ct6Watts
+    filters:
+      - multiply: 0.001
+    unit_of_measurement: kWh
+    device_class: energy
+    state_class: total_increasing
+
+# https://esphome.io/components/button/index.html
+# https://esphome.io/components/button/restart.html
+button:
+  - platform: restart
+    id: restart_button
+    name: $friendly_name Restart Firmware
+    entity_category: diagnostic
+    disabled_by_default: $disable_entities
+
+time:
+  - platform: sntp
+    id: sntp_time
+
+select:
+  - platform: template
+    name: CT Clamp model 1
+    id: ctclamp1
+    options:
+    - "SCT-013-000 100A/50ma"
+    - "SCT-016 120A/40mA"
+    - "SCT-024 200A/50mA"
+    optimistic: true
+    restore_value: true
+    set_action:
+      - script.execute: script_save_changes
+    on_value:
+      - lambda: |-
+          if (x == "SCT-013-000 100A/50ma") { id(ct1_cal) == 27518; }
+          else if (x == "SCT-016 120A/40mA") { id(ct1_cal) == 41787; }
+          else if (x == "SCT-024 200A/50mA") { id(ct1_cal) == 55036; }
+
+script:
+  - id: script_save_changes
+    mode: restart
+    then:
+    - delay: 1s
+    - lambda: global_preferences->sync();
+
+text_sensor:
+  - platform: template
+    name: "Project"
+    lambda: |-
+      return to_string(ESPHOME_PROJECT_NAME);
+
+  - platform: template
+    name: "Version"
+    lambda: |-
+      return to_string(ESPHOME_PROJECT_VERSION);
+
+# Send IP Address to HA.
+# [https://esphome.io/components/text_sensor/wifi_info.html](https://esphome.io/components/text_sensor/wifi_info.html)
+  - platform: wifi_info
+    ip_address:
+        name: $friendly_name IP Address
+        entity_category: diagnostic
+        disabled_by_default: $disable_entities
