@@ -223,6 +223,9 @@ sensor:
     gain_pga: 1X
     update_interval: ${update_time}
 
+  - platform: uptime
+    name: Uptime Sensor
+
 # https://esphome.io/components/button/index.html
 # https://esphome.io/components/button/restart.html
 button:
@@ -279,7 +282,3 @@ text_sensor:
         name: $friendly_name IP Address
         entity_category: diagnostic
         disabled_by_default: $disable_entities
-
-  sensor:
-  - platform: uptime
-    name: Uptime Sensor
