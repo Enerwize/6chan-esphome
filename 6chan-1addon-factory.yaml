@@ -204,6 +204,8 @@ sensor:
         id: ct9Watts
       gain_voltage: ${voltage_cal}
       gain_ct: ${current_cal}
+    frequency:
+      name: ${disp_name} Freq C
     line_frequency: 50Hz
     gain_pga: 1X
     update_interval: ${update_time}
@@ -235,6 +237,8 @@ sensor:
         id: ct12Watts
       gain_voltage: ${voltage_cal}
       gain_ct: ${current_cal}
+    frequency:
+      name: ${disp_name} Freq D
     line_frequency: 50Hz
     gain_pga: 1X
     update_interval: ${update_time}
