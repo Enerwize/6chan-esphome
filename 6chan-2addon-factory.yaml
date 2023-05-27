@@ -1,5 +1,5 @@
 substitutions:
-# Change the disp_name to something you want
+  # Change the disp_name to something you want
   disp_name: 6chan
   friendly_name: '6 Channel Energy Meter'
   # Interval of how often the power is updated
@@ -112,6 +112,12 @@ sensor:
         id: ct1Watts
         # filters:
         # - multiply: 2
+      reactive_power:
+        name: ${disp_name} CT1 Reactive Power
+        id: ct1VAR
+      power_factor:
+        name: ${disp_name} CT1 Power Factor
+        id: ct1PF
       gain_voltage: ${voltage_cal}
       gain_ct: ${current_cal}
     phase_b:
@@ -121,6 +127,12 @@ sensor:
       power:
         name: ${disp_name} CT2 Watts
         id: ct2Watts
+      reactive_power:
+        name: ${disp_name} CT2 Reactive Power
+        id: ct2VAR
+      power_factor:
+        name: ${disp_name} CT2 Power Factor
+        id: ct2PF
       gain_voltage: ${voltage_cal}
       gain_ct: ${current_cal}
     phase_c:
@@ -130,6 +142,12 @@ sensor:
       power:
         name: ${disp_name} CT3 Watts
         id: ct3Watts
+      reactive_power:
+        name: ${disp_name} CT3 Reactive Power
+        id: ct3VAR
+      power_factor:
+        name: ${disp_name} CT3 Power Factor
+        id: ct3PF
       gain_voltage: ${voltage_cal}
       gain_ct: ${current_cal}
     frequency:
@@ -153,6 +171,12 @@ sensor:
       power:
         name: ${disp_name} CT4 Watts
         id: ct4Watts
+      reactive_power:
+        name: ${disp_name} CT4 Reactive Power
+        id: ct4VAR
+      power_factor:
+        name: ${disp_name} CT4 Power Factor
+        id: ct2PF
       gain_voltage: ${voltage_cal}
       gain_ct: ${current_cal}
     phase_b:
@@ -162,6 +186,12 @@ sensor:
       power:
         name: ${disp_name} CT5 Watts
         id: ct5Watts
+      reactive_power:
+        name: ${disp_name} CT5 Reactive Power
+        id: ct5VAR
+      power_factor:
+        name: ${disp_name} CT5 Power Factor
+        id: ct5PF
       gain_voltage: ${voltage_cal}
       gain_ct: ${current_cal}
     phase_c:
@@ -171,6 +201,12 @@ sensor:
       power:
         name: ${disp_name} CT6 Watts
         id: ct6Watts
+      reactive_power:
+        name: ${disp_name} CT6 Reactive Power
+        id: ct6VAR
+      power_factor:
+        name: ${disp_name} CT6 Power Factor
+        id: ct6PF
       gain_voltage: ${voltage_cal}
       gain_ct: ${current_cal}
     frequency:
