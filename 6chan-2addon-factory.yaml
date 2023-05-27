@@ -127,6 +127,12 @@ sensor:
       power:
         name: ${disp_name} CT2 Watts
         id: ct2Watts
+      reactive_power:
+        name: ${disp_name} CT2 Reactive Power
+        id: ct2VAR
+      power_factor:
+        name: ${disp_name} CT2 Power Factor
+        id: ct2PF
       gain_voltage: ${voltage_cal}
       gain_ct: ${current_cal}
     phase_c:
