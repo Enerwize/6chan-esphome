@@ -127,12 +127,6 @@ sensor:
       power:
         name: ${disp_name} CT2 Watts
         id: ct2Watts
-      reactive_power:
-        name: ${disp_name} CT2 Reactive Power
-        id: ct2VAR
-      power_factor:
-        name: ${disp_name} CT2 Power Factor
-        id: ct2PF
       gain_voltage: ${voltage_cal}
       gain_ct: ${current_cal}
     phase_c:
@@ -142,12 +136,6 @@ sensor:
       power:
         name: ${disp_name} CT3 Watts
         id: ct3Watts
-      reactive_power:
-        name: ${disp_name} CT3 Reactive Power
-        id: ct3VAR
-      power_factor:
-        name: ${disp_name} CT3 Power Factor
-        id: ct3PF
       gain_voltage: ${voltage_cal}
       gain_ct: ${current_cal}
     frequency:
@@ -186,12 +174,6 @@ sensor:
       power:
         name: ${disp_name} CT5 Watts
         id: ct5Watts
-      reactive_power:
-        name: ${disp_name} CT5 Reactive Power
-        id: ct5VAR
-      power_factor:
-        name: ${disp_name} CT5 Power Factor
-        id: ct5PF
       gain_voltage: ${voltage_cal}
       gain_ct: ${current_cal}
     phase_c:
@@ -201,12 +183,6 @@ sensor:
       power:
         name: ${disp_name} CT6 Watts
         id: ct6Watts
-      reactive_power:
-        name: ${disp_name} CT6 Reactive Power
-        id: ct6VAR
-      power_factor:
-        name: ${disp_name} CT6 Power Factor
-        id: ct6PF
       gain_voltage: ${voltage_cal}
       gain_ct: ${current_cal}
     frequency:
