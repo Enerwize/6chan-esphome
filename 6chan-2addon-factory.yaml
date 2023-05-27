@@ -176,7 +176,7 @@ sensor:
         id: ct4VAR
       power_factor:
         name: ${disp_name} CT4 Power Factor
-        id: ct2PF
+        id: ct4PF
       gain_voltage: ${voltage_cal}
       gain_ct: ${current_cal}
     phase_b:
