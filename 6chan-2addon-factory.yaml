@@ -328,7 +328,7 @@ sensor:
         id: ct18Amps
       power:
         name: ${disp_name} CT18 Watts
-        id: ct12Watts
+        id: ct18Watts
       gain_voltage: ${voltage_cal}
       gain_ct: ${current_cal}
     frequency:
