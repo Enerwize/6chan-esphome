@@ -1,4 +1,4 @@
-substitutions: 
+substitutions:
   # Change the disp_name to something you want
   disp_name: 6chan
   friendly_name: '6 Channel Energy Meter'
@@ -142,6 +142,12 @@ sensor:
       power:
         name: ${disp_name} CT3 Watts
         id: ct3Watts
+      reactive_power:
+        name: ${disp_name} CT3 Reactive Power
+        id: ct3VAR
+      power_factor:
+        name: ${disp_name} CT3 Power Factor
+        id: ct3PF
       gain_voltage: ${voltage_cal}
       gain_ct: ${current_cal}
     frequency:
