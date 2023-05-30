@@ -1,0 +1,9 @@
+{
+  "chipFamily": "ESP32",
+  "parts": [
+    {
+      "path": "6chan-2addons-esp32/6chan-2addons-esp32.bin",
+      "offset": 0
+    }
+  ]
+}
