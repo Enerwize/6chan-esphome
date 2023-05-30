@@ -1,6 +1,6 @@
 substitutions:
 # Change the disp_name to something you want
-  disp_name: 6chan
+  disp_name: 6chan-1addon
   friendly_name: 6 Channel Energy Meter
   # Interval of how often the power is updated
   update_time: 5s

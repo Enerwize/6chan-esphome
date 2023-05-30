@@ -1,6 +1,6 @@
 substitutions:
 # Change the disp_name to something you want
-  disp_name: 6chan
+  disp_name: 6chan-noaddon
   friendly_name: 6 Channel Energy Meter
   # Interval of how often the power is updated
   update_time: 5s
@@ -26,16 +26,19 @@ substitutions:
 esphome:
     name: ${disp_name}
     name_add_mac_suffix: true
-    platform: ESP32
-    board: nodemcu-32s
     project:
       name: "energymeter.6chan"
       version: "0.1.1"
 
+esp32:
+  board: az-delivery-devkit-v4
+  framework:
+    type: arduino
+
 # Sets up Bluetooth LE (Only on ESP32) to allow the user
 # to provision wifi credentials to the device.
-esp32_improv:
-  authorizer: none
+#esp32_improv:
+#  authorizer: none
 
 # This should point to the public location of this yaml file.
 dashboard_import:

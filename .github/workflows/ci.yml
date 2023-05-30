@@ -12,7 +12,7 @@ jobs:
         file:
           - 6chan-noaddon-factory.yaml
           - 6chan-1addon-factory.yaml
-          - 6chan-2addon-factory.yaml
+          - 6chan-2addons-factory.yaml
 
     steps:
       - name: Checkout source code
