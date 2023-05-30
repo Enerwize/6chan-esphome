@@ -10,7 +10,7 @@ jobs:
     strategy:
       matrix:
         file:
-          - 6chan-factory.yaml
+          - 6chan-noaddon-factory.yaml
           - 6chan-1addon-factory.yaml
           - 6chan-2addon-factory.yaml
 
