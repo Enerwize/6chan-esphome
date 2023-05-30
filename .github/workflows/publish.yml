@@ -12,5 +12,5 @@ jobs:
   build:
     uses: esphome/workflows/.github/workflows/publish.yml@main
     with:
-      files: 6chan-noaddon-factory.yaml, 6chan-1addon-factory.yaml, 6chan-2addon-factory.yaml
+      files: 6chan-noaddon-factory.yaml, 6chan-1addon-factory.yaml, 6chan-2addons-factory.yaml
       name: 6chan-esphome
