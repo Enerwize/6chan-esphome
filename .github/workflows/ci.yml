@@ -11,6 +11,9 @@ jobs:
       matrix:
         file:
           - 6chan-factory.yaml
+          - 6chan-1addon-factory.yaml
+          - 6chan-2addon-factory.yaml
+
     steps:
       - name: Checkout source code
         uses: actions/checkout@v2
