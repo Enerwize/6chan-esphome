@@ -1,5 +1,5 @@
 substitutions:
-# Change the disp_name to something you want
+  # Change the disp_name to something you want
   disp_name: 6chan-noaddon
   friendly_name: 6 Channel Energy Meter
   # Interval of how often the power is updated
