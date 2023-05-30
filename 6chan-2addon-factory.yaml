@@ -1,4 +1,4 @@
-substitutions:
+substitutions: 
   # Change the disp_name to something you want
   disp_name: 6chan
   friendly_name: '6 Channel Energy Meter'
