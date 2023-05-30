@@ -42,7 +42,7 @@ esp32:
 
 # This should point to the public location of this yaml file.
 dashboard_import:
-  package_import_url: github://Enerwize/6chan-esphome/6chan-1addon-factory.yaml
+  package_import_url: github://Enerwize/6chan-esphome/6chan-2addons-factory.yaml
   import_full_config: false # or true
 
 preferences:
@@ -186,6 +186,12 @@ sensor:
       power:
         name: ${disp_name} CT5 Watts
         id: ct5Watts
+      reactive_power:
+        name: ${disp_name} CT5 Reactive Power
+        id: ct5VAR
+      power_factor:
+        name: ${disp_name} CT5 Power Factor
+        id: ct5PF
       gain_voltage: ${voltage_cal}
       gain_ct: ${current_cal}
     phase_c:
@@ -195,6 +201,12 @@ sensor:
       power:
         name: ${disp_name} CT6 Watts
         id: ct6Watts
+      reactive_power:
+        name: ${disp_name} CT6 Reactive Power
+        id: ct6VAR
+      power_factor:
+        name: ${disp_name} CT6 Power Factor
+        id: ct6PF
       gain_voltage: ${voltage_cal}
       gain_ct: ${current_cal}
     frequency:
