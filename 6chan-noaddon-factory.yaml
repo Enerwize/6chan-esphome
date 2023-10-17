@@ -27,7 +27,7 @@ esphome:
     name: ${disp_name}
     name_add_mac_suffix: true
     project:
-      name: "Enerwize.6chan"
+      name: "Enerwize.6chan-noaddon"
       version: "0.1.1"
 
 esp32:
@@ -73,6 +73,8 @@ ota:
 
 web_server:
   port: 80
+  ota: false
+  log: false
 
 spi:
   clk_pin: 18
