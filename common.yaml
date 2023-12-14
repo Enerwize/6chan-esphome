@@ -10,16 +10,6 @@ esp32:
   framework:
     type: arduino
 
-# Sets up Bluetooth LE (Only on ESP32) to allow the user
-# to provision wifi credentials to the device.
-#esp32_improv:
-#  authorizer: none
-
-# This should point to the public location of this yaml file.
-dashboard_import:
-  package_import_url: github://Enerwize/6chan-esphome/6chan-factory.yaml
-  import_full_config: false # or true
-
 preferences:
     flash_write_interval: 10min
 
