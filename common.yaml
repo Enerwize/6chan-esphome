@@ -2,7 +2,7 @@ esphome:
     name: ${disp_name}
     name_add_mac_suffix: true
     project:
-      name: "Enerwize.6chan-noaddon"
+      name: "Enerwize.6chan"
       version: "0.1.1"
 
 esp32:
