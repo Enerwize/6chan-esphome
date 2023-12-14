@@ -75,6 +75,7 @@ web_server:
   port: 80
   ota: false
   log: false
+  local: true
 
 spi:
   clk_pin: 18
