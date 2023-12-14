@@ -3,7 +3,7 @@ esphome:
     name_add_mac_suffix: true
     project:
       name: "Enerwize.6chan"
-      version: "0.1.1"
+      version: "0.1.2"
 
 esp32:
   board: az-delivery-devkit-v4
