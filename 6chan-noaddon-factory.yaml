@@ -29,7 +29,6 @@ dashboard_import:
   import_full_config: false # or true
 
 packages:
-  web_server: !include common/webserver.yaml
   device_base: !include common/device_base.yaml
 
 sensor:

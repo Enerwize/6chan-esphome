@@ -24,7 +24,6 @@ substitutions:
   disable_webserver: "false" # set to "true" to disable webserver listening on port 80.
 
 packages:
-  web_server: !include common/webserver.yaml
   device_base: !include common/device_base.yaml
 
 # This should point to the public location of this yaml file.
