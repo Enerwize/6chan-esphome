@@ -22,7 +22,6 @@ substitutions:
   disable_webserver: "false" # set to "true" to disable webserver listening on port 80.
 
 packages:
-  web_server: !include common/webserver.yaml
   device_base: !include common/device_base.yaml
 
 # This should point to the public location of this yaml file.
@@ -35,91 +34,91 @@ sensor:
     name: ${disp_name} WiFi
     update_interval: 60s
 
-- platform: atm90e32
-  cs_pin: 5
-  phase_a:
-    voltage:
-      name: ${disp_name} Volts A
-      id: ic1Volts
-      accuracy_decimals: 1
-    current:
-      name: ${disp_name} CT1 Amps
-      id: ct1Amps
-      # The max value for current that the meter can output is 65.535. If you expect to measure current over 65A,
-      # divide the gain_ct by 2 (120A CT) or 4 (200A CT) and multiply the current and power values by 2 or 4 by uncommenting the filter below
-      # filters:
-      # - multiply: 2
-    power:
-      name: ${disp_name} CT1 Watts
-      id: ct1Watts
-      # filters:
-      # - multiply: 2
-    gain_voltage: ${voltage_cal}
-    gain_ct: ${current_cal}
-  phase_b:
-    current:
-      name: ${disp_name} CT2 Amps
-      id: ct2Amps
-    power:
-      name: ${disp_name} CT2 Watts
-      id: ct2Watts
-    gain_voltage: ${voltage_cal}
-    gain_ct: ${current_cal}
-  phase_c:
-    current:
-      name: ${disp_name} CT3 Amps
-      id: ct3Amps
-    power:
-      name: ${disp_name} CT3 Watts
-      id: ct3Watts
-    gain_voltage: ${voltage_cal}
-    gain_ct: ${current_cal}
-  frequency:
-    name: ${disp_name} Freq A
-  line_frequency: 50Hz
-  gain_pga: 1X
-  update_interval: ${update_time}
+  - platform: atm90e32
+    cs_pin: 5
+    phase_a:
+      voltage:
+        name: ${disp_name} Volts A
+        id: ic1Volts
+        accuracy_decimals: 1
+      current:
+        name: ${disp_name} CT1 Amps
+        id: ct1Amps
+        # The max value for current that the meter can output is 65.535. If you expect to measure current over 65A,
+        # divide the gain_ct by 2 (120A CT) or 4 (200A CT) and multiply the current and power values by 2 or 4 by uncommenting the filter below
+        # filters:
+        # - multiply: 2
+      power:
+        name: ${disp_name} CT1 Watts
+        id: ct1Watts
+        # filters:
+        # - multiply: 2
+      gain_voltage: ${voltage_cal}
+      gain_ct: ${current_cal}
+    phase_b:
+      current:
+        name: ${disp_name} CT2 Amps
+        id: ct2Amps
+      power:
+        name: ${disp_name} CT2 Watts
+        id: ct2Watts
+      gain_voltage: ${voltage_cal}
+      gain_ct: ${current_cal}
+    phase_c:
+      current:
+        name: ${disp_name} CT3 Amps
+        id: ct3Amps
+      power:
+        name: ${disp_name} CT3 Watts
+        id: ct3Watts
+      gain_voltage: ${voltage_cal}
+      gain_ct: ${current_cal}
+    frequency:
+      name: ${disp_name} Freq A
+    line_frequency: 50Hz
+    gain_pga: 1X
+    update_interval: ${update_time}
 
-#IC2
-- platform: atm90e32
-  cs_pin: 4
-  phase_a:
-    #this voltage is only needed if monitoring 2 voltages
-    voltage:
-      name: ${disp_name} Volts B
-      id: ic2Volts
-      accuracy_decimals: 1
-    current:
-      name: ${disp_name} CT4 Amps
-      id: ct4Amps
-    power:
-      name: ${disp_name} CT4 Watts
-      id: ct4Watts
-    gain_voltage: ${voltage_cal}
-    gain_ct: ${current_cal}
-  phase_b:
-    current:
-      name: ${disp_name} CT5 Amps
-      id: ct5Amps
-    power:
-      name: ${disp_name} CT5 Watts
-      id: ct5Watts
-    gain_voltage: ${voltage_cal}
-    gain_ct: ${current_cal}
-  phase_c:
-    current:
-      name: ${disp_name} CT6 Amps
-      id: ct6Amps
-    power:
-      name: ${disp_name} CT6 Watts
-      id: ct6Watts
-    gain_voltage: ${voltage_cal}
-    gain_ct: ${current_cal}
-  frequency:
-    name: ${disp_name} Freq B
-  line_frequency: 50Hz
-  gain_pga: 1X
-  update_interval: ${update_time}
+  #IC2
+  - platform: atm90e32
+    cs_pin: 4
+    phase_a:
+      #this voltage is only needed if monitoring 2 voltages
+      voltage:
+        name: ${disp_name} Volts B
+        id: ic2Volts
+        accuracy_decimals: 1
+      current:
+        name: ${disp_name} CT4 Amps
+        id: ct4Amps
+      power:
+        name: ${disp_name} CT4 Watts
+        id: ct4Watts
+      gain_voltage: ${voltage_cal}
+      gain_ct: ${current_cal}
+    phase_b:
+      current:
+        name: ${disp_name} CT5 Amps
+        id: ct5Amps
+      power:
+        name: ${disp_name} CT5 Watts
+        id: ct5Watts
+      gain_voltage: ${voltage_cal}
+      gain_ct: ${current_cal}
+    phase_c:
+      current:
+        name: ${disp_name} CT6 Amps
+        id: ct6Amps
+      power:
+        name: ${disp_name} CT6 Watts
+        id: ct6Watts
+      gain_voltage: ${voltage_cal}
+      gain_ct: ${current_cal}
+    frequency:
+      name: ${disp_name} Freq B
+    line_frequency: 50Hz
+    gain_pga: 1X
+    update_interval: ${update_time}
 
 
   #IC1 AddOn 1
