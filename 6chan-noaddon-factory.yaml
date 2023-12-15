@@ -27,5 +27,19 @@ dashboard_import:
 
 packages:
   device_base: !include common/device_base.yaml
-
-<<: !include common/sensors_mainboard.yaml
+  ic1: !include
+    file: common/sensor/ic-power.yaml
+    vars:
+      first_CT_num: 1
+      second_CT_num: 2
+      third_CT_num: 3
+      cs_pin: 5
+      ic_number: 1
+  ic2: !include
+    file: common/sensor/ic-power.yaml
+    vars:
+      first_CT_num: 4
+      second_CT_num: 5
+      third_CT_num: 6
+      cs_pin: 4
+      ic_number: 2
