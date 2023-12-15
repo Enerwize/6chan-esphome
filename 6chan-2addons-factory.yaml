@@ -23,18 +23,14 @@ substitutions:
   disable_entities: "false" # set to "false" to have all entities show up in Home Assistant automatically
   disable_webserver: "false" # set to "true" to disable webserver listening on port 80.
 
-!include common.yaml
+packages:
+  web_server: !include common/webserver.yaml
+  device_base: !include common/device_base.yaml
 
 # This should point to the public location of this yaml file.
 dashboard_import:
   package_import_url: github://Enerwize/6chan-esphome/6chan-2addons-factory.yaml
   import_full_config: false # or true
-
-globals:
-  - id: ct1_cal
-    type: int
-    restore_value: yes
-    initial_value: '27518'
 
 sensor:
   - platform: wifi_signal

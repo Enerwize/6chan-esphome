@@ -1,0 +1,42 @@
+esphome:
+    name: ${disp_name}
+    name_add_mac_suffix: true
+    project:
+      name: "Enerwize.6chan"
+      version: "0.1.2"
+
+esp32:
+  board: az-delivery-devkit-v4
+  framework:
+    type: arduino
+
+preferences:
+    flash_write_interval: 10min
+
+wifi:
+  # Set up a wifi access point
+  ap:
+    password: "12345678"
+
+# In combination with the `ap` this allows the user
+# to provision wifi credentials to the device.
+captive_portal:
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+#    encryption:
+#        key:
+
+# https://esphome.io/components/ota.html
+ota:
+    on_error:
+        then:
+            - button.press: restart_button
+
+spi:
+  clk_pin: 18
+  miso_pin: 19
+  mosi_pin: 23
