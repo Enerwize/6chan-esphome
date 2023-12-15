@@ -1,133 +1,126 @@
 sensor:
+  #IC1 AddOn 2
   - platform: atm90e32
-    cs_pin: 5
+    cs_pin: 27
     phase_a:
       voltage:
-        name: ${disp_name} Volts A
-        id: ic1Volts
+        name: ${disp_name} Volts E
+        id: ic5Volts
         accuracy_decimals: 1
       current:
-        name: ${disp_name} CT1 Amps
-        id: ct1Amps
-        # The max value for current that the meter can output is 65.535. If you expect to measure current over 65A,
-        # divide the gain_ct by 2 (120A CT) or 4 (200A CT) and multiply the current and power values by 2 or 4 by uncommenting the filter below
-        # filters:
-        # - multiply: 2
+        name: ${disp_name} CT13 Amps
+        id: ct13Amps
       power:
-        name: ${disp_name} CT1 Watts
-        id: ct1Watts
-        # filters:
-        # - multiply: 2
+        name: ${disp_name} CT13 Watts
+        id: ct13Watts
       gain_voltage: ${voltage_cal}
       gain_ct: ${current_cal}
     phase_b:
       current:
-        name: ${disp_name} CT2 Amps
-        id: ct2Amps
+        name: ${disp_name} CT14 Amps
+        id: ct14Amps
       power:
-        name: ${disp_name} CT2 Watts
-        id: ct2Watts
+        name: ${disp_name} CT14 Watts
+        id: ct14Watts
       gain_voltage: ${voltage_cal}
       gain_ct: ${current_cal}
     phase_c:
       current:
-        name: ${disp_name} CT3 Amps
-        id: ct3Amps
+        name: ${disp_name} CT15 Amps
+        id: ct15Amps
       power:
-        name: ${disp_name} CT3 Watts
-        id: ct3Watts
+        name: ${disp_name} CT15 Watts
+        id: ct15Watts
       gain_voltage: ${voltage_cal}
       gain_ct: ${current_cal}
     frequency:
-      name: ${disp_name} Freq A
+      name: ${disp_name} Freq C
     line_frequency: 50Hz
     gain_pga: 1X
     update_interval: ${update_time}
-
-  #IC2
+  #IC2 AddOn 2
   - platform: atm90e32
-    cs_pin: 4
+    cs_pin: 17
     phase_a:
-      #this voltage is only needed if monitoring 2 voltages
       voltage:
-        name: ${disp_name} Volts B
-        id: ic2Volts
+        name: ${disp_name} Volts F
+        id: ic6Volts
         accuracy_decimals: 1
       current:
-        name: ${disp_name} CT4 Amps
-        id: ct4Amps
+        name: ${disp_name} CT16 Amps
+        id: ct16Amps
       power:
-        name: ${disp_name} CT4 Watts
-        id: ct4Watts
+        name: ${disp_name} CT16 Watts
+        id: ct16Watts
       gain_voltage: ${voltage_cal}
       gain_ct: ${current_cal}
     phase_b:
       current:
-        name: ${disp_name} CT5 Amps
-        id: ct5Amps
+        name: ${disp_name} CT17 Amps
+        id: ct17Amps
       power:
-        name: ${disp_name} CT5 Watts
-        id: ct5Watts
+        name: ${disp_name} CT17 Watts
+        id: ct17Watts
       gain_voltage: ${voltage_cal}
       gain_ct: ${current_cal}
     phase_c:
       current:
-        name: ${disp_name} CT6 Amps
-        id: ct6Amps
+        name: ${disp_name} CT18 Amps
+        id: ct18Amps
       power:
-        name: ${disp_name} CT6 Watts
-        id: ct6Watts
+        name: ${disp_name} CT18 Watts
+        id: ct18Watts
       gain_voltage: ${voltage_cal}
       gain_ct: ${current_cal}
     frequency:
-      name: ${disp_name} Freq B
+      name: ${disp_name} Freq D
     line_frequency: 50Hz
     gain_pga: 1X
     update_interval: ${update_time}
 
   - platform: total_daily_energy
-    name: ${disp_name} CT1 kWh
-    power_id: ct1Watts
+    name: ${disp_name} CT13 kWh
+    power_id: ct13Watts
     filters:
       - multiply: 0.001
     unit_of_measurement: kWh
     device_class: energy
     state_class: total_increasing
   - platform: total_daily_energy
-    name: ${disp_name} CT2 kWh
-    power_id: ct2Watts
+    name: ${disp_name} CT14 kWh
+    power_id: ct14Watts
     filters:
       - multiply: 0.001
     unit_of_measurement: kWh
     device_class: energy
     state_class: total_increasing
   - platform: total_daily_energy
-    name: ${disp_name} CT3 kWh
-    power_id: ct3Watts
+    name: ${disp_name} CT15 kWh
+    power_id: ct15Watts
     filters:
       - multiply: 0.001
     unit_of_measurement: kWh
     device_class: energy
     state_class: total_increasing
   - platform: total_daily_energy
-    name: ${disp_name} CT4 kWh
-    power_id: ct4Watts
+    name: ${disp_name} CT16 kWh
+    power_id: ct16Watts
     filters:
       - multiply: 0.001
     unit_of_measurement: kWh
     device_class: energy
     state_class: total_increasing
   - platform: total_daily_energy
-    name: ${disp_name} CT5 kWh
-    power_id: ct5Watts
+    name: ${disp_name} CT17 kWh
+    power_id: ct17Watts
     filters:
       - multiply: 0.001
     unit_of_measurement: kWh
     device_class: energy
     state_class: total_increasing
   - platform: total_daily_energy
-    name: ${disp_name} CT6 kWh
-    power_id: ct6Watts
+    name: ${disp_name} CT18 kWh
+    power_id: ct18Watts
     filters:
       - multiply: 0.001
     unit_of_measurement: kWh
