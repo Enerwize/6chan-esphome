@@ -21,7 +21,9 @@ substitutions:
   disable_entities: "false" # set to "false" to have all entities show up in Home Assistant automatically
   disable_webserver: "false" # set to "true" to disable webserver listening on port 80.
 
-!include https://github.com/Enerwize/6chan-esphome/common.yaml
+packages:
+  web_server: !include common/webserver.yaml
+  device_base: !include common/device_base.yaml
 
 # This should point to the public location of this yaml file.
 dashboard_import:

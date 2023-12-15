@@ -28,7 +28,9 @@ dashboard_import:
   package_import_url: github://Enerwize/6chan-esphome/6chan-noaddon-factory.yaml
   import_full_config: false # or true
 
-!include common.yaml
+packages:
+  web_server: !include common/webserver.yaml
+  device_base: !include common/device_base.yaml
 
 sensor:
   - platform: wifi_signal
