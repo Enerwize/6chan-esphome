@@ -34,7 +34,7 @@ sensor:
       gain_ct: ${current_cal}
     frequency:
       name: ${disp_name} IC${ic_number} Freq
-    line_frequency: 50Hz
+    line_frequency: ${frequency}
     gain_pga: 1X
     update_interval: ${update_time}
 
